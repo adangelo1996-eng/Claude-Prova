@@ -1,0 +1,301 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --synapse-bg: #f2f0ec;
+  --synapse-text: #003153; /* prussian blue */
+  --synapse-text-muted: #3b3b3b;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--synapse-bg);
+  color: var(--synapse-text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+body[data-display-font="true"] {
+  font-family: var(--font-display), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.synapse-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.synapse-main {
+  flex: 1;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+  position: relative;
+}
+
+.hero-motto {
+  font-family: var(--font-display), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--synapse-text);
+  font-size: clamp(2.8rem, 8vw, 4.8rem);
+  line-height: 1.1;
+}
+
+.hero-motto-line {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 900ms ease-in-out;
+}
+
+.hero-motto-line.is-visible {
+  opacity: 1;
+}
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--synapse-text-muted);
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 40px;
+  margin: 0.75rem auto 0;
+  background-color: rgba(0, 49, 83, 0.24);
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-scroll-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 49, 83, 0.85) 50%,
+    transparent 100%
+  );
+  animation: scroll-pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes scroll-pulse {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.synapse-header {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 3vw;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-12px);
+  transition: opacity 280ms ease-out, transform 280ms ease-out;
+  mix-blend-mode: normal;
+}
+
+.synapse-header.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.synapse-logo {
+  font-family: var(--font-display), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.synapse-logo-dot {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 999px;
+  display: inline-block;
+  margin-left: 0.35rem;
+  background-color: var(--synapse-text);
+}
+
+.synapse-nav {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.synapse-nav a {
+  opacity: 0.8;
+}
+
+.synapse-nav a:hover {
+  opacity: 1;
+}
+
+.section {
+  padding: 5rem 8vw;
+}
+
+.section-title {
+  font-family: var(--font-display), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-heading {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin: 0 0 1.25rem;
+  color: var(--synapse-text);
+}
+
+.section-body {
+  max-width: 720px;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--synapse-text-muted);
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+.card {
+  border-top: 1px solid rgba(0, 49, 83, 0.14);
+  padding-top: 1.75rem;
+}
+
+.card-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  color: var(--synapse-text-muted);
+}
+
+.card-title {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+}
+
+.card-body {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--synapse-text-muted);
+}
+
+.card-list {
+  margin: 0.75rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--synapse-text-muted);
+}
+
+.cta {
+  padding: 4rem 8vw 5rem;
+}
+
+.cta-inner {
+  border-top: 1px solid rgba(0, 49, 83, 0.16);
+  padding-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 720px;
+}
+
+.cta-title {
+  font-family: var(--font-display), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.cta-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--synapse-text-muted);
+}
+
+.cta-link {
+  font-size: 0.9rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cta-link span {
+  border-bottom: 1px solid rgba(0, 49, 83, 0.4);
+}
+
+.cta-link::after {
+  content: "→";
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .synapse-header {
+    padding-inline: 1.5rem;
+  }
+
+  .synapse-nav {
+    gap: 1rem;
+    font-size: 0.7rem;
+  }
+
+  .section,
+  .cta {
+    padding-inline: 1.5rem;
+  }
+}
